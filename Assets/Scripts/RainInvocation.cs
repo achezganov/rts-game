@@ -7,12 +7,13 @@ public class RainInvocation : MonoBehaviour
 {
     public Light dirLight; // сслыка на directionLight
     private ParticleSystem _ps; // объявление переменной типа part. sys.
-    private bool _isRain = false; 
+    private bool _isRain = true; 
 
     private void Start()
     {
         _ps = GetComponent<ParticleSystem>(); // инициализация
         StartCoroutine(Weather()); // запуск куротины
+        
     }
 
     private void Update()
@@ -33,7 +34,7 @@ public class RainInvocation : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(60f, 120f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f));
             if (_isRain) _ps.Stop();
             else _ps.Play();
             _isRain = !_isRain;
